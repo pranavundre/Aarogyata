@@ -1,0 +1,221 @@
+create table adhaar(
+adhaar_no char(6),
+residence varchar(100) constraint address not null,
+email varchar(40) constraint email_id unique,
+name varchar(40) constraint name not null,
+dob date constraint dateofbirth not null,
+p_no char(50) constraint p_no_ unique,
+constraint adhaar_number primary key(adhaar_no)
+);
+//add these
+alter table adhaar add constraint email_chk check(email like '%_@__%.__%');
+alter table adhaar add constraint check_pno check(length(p_no)=10);
+
+create table card(
+c_id char(6),
+blood_g char(3) constraint bloog_grp not null ,
+balance number(10),
+status char(8) constraint status_of_card not null,
+adhaar_no references adhaar(adhaar_no) constraint adhaar_num unique,
+exp_date date constraint expiry not null,
+type varchar(8) constraint type_card not null,
+constraint card_pk primary key(c_id)
+);
+
+//type can only doctor paitent hospital or admin
+alter table card add constraint check_card_type check(type='admin' or type='patient' or type='doctor');
+
+//add these
+alter table card add constraint check_Sttus check(status='active' or status='inactive');
+
+create table admin(
+admin_id references card(c_id),
+department varchar(20) constraint dept not null,
+license char(6) constraint license_admin unique,
+constraint admin_pk primary key(admin_id)
+);
+
+//add these
+alter table admin add constraint dept_admin check(department='UIDAI' or depart='MoHFW');
+
+create table doctor(
+doc_id references card(c_id),
+fees number(5),
+lis_no char(5) constraint license_doc unique,
+speciality varchar(40) constraint doc_spez unique,
+constraint doc_pk primary key(doc_id)
+);
+
+create table hospital(
+h_id char(6),
+lis_no char(5) constraint license_hosp unique,
+name varchar(40) constraint name_hosp not null,
+h_fees number(5),
+type varchar(10) constraint type_hosp not null,
+constraint hosp_pk primary key(h_id)
+);
+
+//adding constraint for type which can only be private or government
+alter table hospital add constraint check_hosp_type check(type='government' or type='private');
+
+//last me karna hai ise
+update hospital set h_fees=nvl(h_fees,0);
+
+create table disease(
+disease_id char(6),
+name varchar(20) constraint dis_name unique,
+speciality references doctor(speciality) constraint spec_disease not null,
+constraint disease_pk primary key(disease_id)
+);
+
+
+create table medicine_shop(
+med_shop_id char(6),
+name varchar(20) constraint shop_name not null,
+type varchar(10) constraint type_med_store not null, 
+location varchar(40) constraint location_shop unique,
+constraint med_shop_pk primary key(med_shop_id)
+);
+
+//adding constraint for type which can only be private or government
+
+alter table medicine_shop add constraint med_shop_type_check check(type='government' or type='private');
+
+create table medicine(
+med_id char(6),
+name varchar(20) constraint med_name not null,
+composition varchar(40) constraint comp_med unique, 
+manufacturer varchar(20) constraint manu_med not null,
+price number(4) constraint price_med not null,
+constraint med_pk primary key(med_id)
+);
+
+
+
+create table patient(
+p_id references card(c_id),
+constraint patient_pk primary key(p_id)
+);
+
+
+
+
+create table works_in_hospital(
+doc_id references doctor(doc_id),
+hosp_no varchar(2) constraint hosp_no_name not null,
+constraint work_in_hospital_pk primary key(doc_id)
+);
+
+create table treatment(
+p_id references patient(p_id),
+ongoing_treat references disease(name) constraint ongoing_treat_name not null,
+constraint ongoing_pk primary key(p_id)
+);
+
+create table health_record(
+p_id references patient(p_id),
+record varchar(25) constraint record_name not null,
+constraint record_pk primary key(p_id)
+);
+
+
+create table hospital_work(
+doc_id references doctor(doc_id),
+h_id references hospital(h_id),
+constraint hosptalwork_pk primary key(h_id,doc_id)
+);
+
+
+
+create table prescribes(
+doc_id references doctor(doc_id),
+med_id references medicine(med_id),
+constraint prescribes_pk primary key(med_id,doc_id)
+);
+
+
+create table sells(
+med_id references medicine(med_id),
+med_shop_id references medicine_shop(med_shop_id),
+constraint sells_pk primary key(med_id,med_shop_id)
+);
+
+
+create table adds(
+disease_id references disease(disease_id),
+h_id references hospital(h_id),
+constraint adds_pk primary key(disease_id,h_id)
+);
+
+
+
+create table treats(
+doc_id references doctor(doc_id),
+p_id references patient(p_id),
+constraint treats_pk primary key(doc_id,p_id)
+);
+
+
+create table cures(
+disease_id references disease(disease_id),
+med_id references medicine(med_id),
+constraint cures_pk primary key(disease_id,med_id)
+);
+
+
+create table appnd_updt(
+admin_id references admin(admin_id),
+c_id references card(c_id),
+constraint appnd_updt_pk primary key(admin_id, c_id)
+);
+
+
+create table symptoms(
+disease_id references disease(disease_id),
+symptom varchar(20) constraint symptom_name not null,
+constraint symptom_pk primary key(disease_id)
+);
+
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+INSERT INTO admin VALUES(&admin_id,&department,&license);
+INSERT INTO doctor VALUES(&doc_id,&fees,&lis_no,&speciality);
+INSERT INTO hospital VALUES(&h_id,&lis_no,&name,&h_fees,&type);
+INSERT INTO disease VALUES(&disease_id,&name,&speciality);
+INSERT INTO medicine_shop VALUES(&med_shop_id,&name,&type,&location);
+INSERT INTO medicine VALUES(&med_id,&name,&composition,&manufacturer,&price);
+insert into patient VALUES(&p_id);
+insert into works_in_hospital VALUES(&doc_id,&hosp_no);
+insert into treatment VALUES(&p_id,ongoing_treat);
+insert into health_record VALUES(&p_id,&record);
+insert into hospital_work VALUES(&doc_id,&h_id);
+insert into prescribes VALUES(&doc_id,&med_id);
+insert into sells VALUES(&med_id,&med_shop_id);
+insert into adds VALUES(&disease_id,&h_id);
+insert into treats VALUES(&doc_id,&p_id);
+INSERT INTO cures VALUES(&disease_id,&med_id);
+INSERT INTO appnd_updt VALUES(&admin_id,&c_id);
+INSERT INTO symptoms VALUES(&disease_id,&symptom);
+&)
+
+ADHAAR (ADHAAR_NO, RESIDENCE , EMAIL, NAME, DOB, P_NO)
+CARD (C_ID, BLOOD_G, BALANCE, STATUS, ADHAAR_NO, EXP_DATE, TYPE)
+ADMIN (ADMIN_ID, DEPARTMENT, LICENSE)
+DOCTOR (DOC_ID, FEES, LCENSE_NO, SPECIALITY)
+HOSPITAL (H_ID, LICENSE_NO, NAME, H_FEES, TYPE)
+DISEASE (DISEASE_ID, NAME, SPECAILITY)
+MEDICINE_SHOP (MED_SHOP_ID, NAME, TYPE, LOCATION)
+MEDICINE (MED_ID, NAME, COMPOSITION, MANUFACTURER, PRICE)
+PATIENT (P_ID)
+WORKS_IN_HOSPITAL (DOC_ID,HOSP_NO)
+TREATMENT (P_ID,ONGOING_TREATMENT)
+HEALTH_RECORD (P_ID, RECORD)
+HOSPITAL_WORK (DOC_ID, H_ID)
+PRESCRIBES (DOC_ID, MED_ID)
+SELLS (MED_ID, MED_SHOP_ID)
+ADDS (DISEASE_ID, H_ID)
+TREATS (DOC_ID, P_ID)
+CURES (DISEASE_ID, MED_ID)
+APPND_UPDT (ADMIN_ID, C_ID)
+SYMPTOMS (DISEASE_ID, SYMPTOM)

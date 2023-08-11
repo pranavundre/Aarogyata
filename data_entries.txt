@@ -1,0 +1,361 @@
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'963512'
+'Bhubaneshwar'
+'mohanraj@gmail.com'
+'Mohanraj Sharma'
+TO_DATE('04-08-1992', 'DD-MM-YYYY')
+'9178234650'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'273483'
+'Katpadi'
+'coolboy@gmail.com'
+'Ramesh Chopra'
+TO_DATE('19-11-1988', 'DD-MM-YYYY')
+'8276316431'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'164276'
+'Sonagachi'
+'shreebasu563@gmail.com'
+'Shree Basu'
+TO_DATE('05-06-03', 'DD-MM-YYYY')
+'8507132039'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'024308'
+'Kolhapur'
+'khatri89@gmail.com'
+'Harihar Khatri'
+TO_DATE('09-05-1989', 'DD-MM-YYYY')
+'7234803561'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'283746'
+'Chinchwad'
+'vineeta.tandon@rediffmail.com'
+'Vineeta Tandon'
+TO_DATE('17-04-2001', 'DD-MM-YYYY')
+'9239642362'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'157435'
+'Faridabad'
+'sswaminathan@yahoo.com'
+'Supriya Swaminathan'
+TO_DATE('19-07-1995', 'DD-MM-YYYY')
+'8898823112'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'013477'
+'Ranchi'
+'msdhoni234@yahoo.com'
+'Mahendra Dhoni'
+TO_DATE('07-07-1977', 'DD-MM-YYYY')
+'7234543226'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'975436'
+'Kanpur'
+'lalikumra86@gmail.com'
+'Lalita Kumra'
+TO_DATE('31-01-1986', 'DD-MM-YYYY')
+'9761986245'
+
+INSERT INTO adhaar VALUES(&adhaar_no,&residence,&email,&name,&dob,&p_no);
+'421353'
+'Rajkot'
+'meradesmahan@hotmail.com'
+'Amol Birla'
+TO_DATE('27-09-1964', 'DD-MM-YYYY')
+'8009003267'
+
+-------------------------------------------------------------------------------
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'216352'
+'B+'
+'6000'
+'active'
+'963512'
+TO_DATE('17-07-2022', 'DD-MM-YYYY')
+'doctor'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'854238'
+'A+'
+'12000'
+'inactive'
+'273483'
+TO_DATE('21-09-2025', 'DD-MM-YYYY')
+'doctor'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'314567'
+'B-'
+'10300'
+'active'
+'164276'
+TO_DATE('01-04-2023', 'DD-MM-YYYY')
+'doctor'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'017642'
+'AB+'
+'16000'
+'active'
+'024308'
+TO_DATE('20-10-2026', 'DD-MM-YYYY')
+'patient'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'532453'
+'B+'
+'2600'
+'active'
+'283746'
+TO_DATE('18-09-2024', 'DD-MM-YYYY')
+'patient'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'226543'
+'AB+'
+'6600'
+'active'
+'157435'
+TO_DATE('22-07-2025', 'DD-MM-YYYY')
+'patient'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'019374'
+'AB-'
+'5500'
+'inactive'
+'013477'
+TO_DATE('17-12-2022', 'DD-MM-YYYY')
+'admin'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'024902'
+'AB+'
+'11900'
+'active'
+'975436'
+TO_DATE('10-07-2023', 'DD-MM-YYYY')
+'admin'
+
+INSERT INTO card VALUES(&c_id,&blood_g,&balance,&status,&adhaar_no,&exp_date,&type);
+'999229'
+'B+'
+'3700'
+'active'
+'421353'
+TO_DATE('16-08-2023', 'DD-MM-YYYY')
+'admin'
+
+--------------------------------------------------------------------------------------
+
+INSERT INTO admin VALUES(&admin_id,&department,&license);
+'019374'
+'MoHFW'
+'778884'
+
+INSERT INTO admin VALUES(&admin_id,&department,&license);
+'024902'
+'UIDAI'
+'009494'
+
+INSERT INTO admin VALUES(&admin_id,&department,&license);
+'999229'
+'MoHFW'
+'636622'
+
+---------------------------------------------------------------------------------------
+
+INSERT INTO doctor VALUES(&doc_id,&fees,&lis_no,&speciality);
+'016352'
+'700'
+'44335'
+'neurologist'
+
+INSERT INTO doctor VALUES(&doc_id,&fees,&lis_no,&speciality);
+'054238'
+'500'
+'82821'
+'Pediatricians'
+
+INSERT INTO doctor VALUES(&doc_id,&fees,&lis_no,&speciality);
+'035555'
+'600'
+'77282'
+'Ophthalmologist'
+
+---------------------------------------------------------------------------------------
+
+INSERT INTO hospital VALUES(&h_id,&lis_no,&name,&h_fees,&type);
+'292229'
+'50501'
+'Sarojini Hospital'
+'500'
+'Government'
+
+INSERT INTO hospital VALUES(&h_id,&lis_no,&name,&h_fees,&type);
+'232333'
+'02012'
+'City Hospital'
+'800'
+'Private'
+
+INSERT INTO hospital VALUES(&h_id,&lis_no,&name,&h_fees,&type);
+'266464'
+'12203'
+'Ruby Hospital'
+'750'
+'Private'
+
+---------------------------------------------------------------------------------------
+
+INSERT INTO disease VALUES(&disease_id,&name,&speciality);
+'436777'
+'Diarrhea'
+'Gastroenterologist'
+
+INSERT INTO disease VALUES(&disease_id,&name,&speciality);
+'009239'
+'Migraine'
+'Neurologist'
+
+INSERT INTO disease VALUES(&disease_id,&name,&speciality);
+'000132'
+'Conjunctivitis'
+'Ophthalmologist'
+
+---------------------------------------------------------------------------------------
+
+INSERT INTO medicine_shop VALUES(&med_shop_id,&name,&type,&location);
+'494193'
+'Star Pharma'
+'Private'
+'Delhi'
+
+INSERT INTO medicine_shop VALUES(&med_shop_id,&name,&type,&location);
+'444169'
+'Janata Medical'
+'Government'
+'Ranchi'
+
+INSERT INTO medicine_shop VALUES(&med_shop_id,&name,&type,&location);
+'496225'
+'The Medicine Shop'
+'Private'
+'Katpadi'
+
+---------------------------------------------------------------------------------------
+
+INSERT INTO medicine VALUES(&med_id,&name,&composition,&manufacturer,&price);
+'356289'
+'Sumatriptan'
+'Tosymra'
+'Cipla Pharmaceuticals'
+'150'
+
+INSERT INTO medicine VALUES(&med_id,&name,&composition,&manufacturer,&price);
+'324361'
+'Loperamide'
+'Bismuth subsalicylate'
+'Emcure Pharma'
+'225'
+
+INSERT INTO medicine VALUES(&med_id,&name,&composition,&manufacturer,&price);
+'300441'
+'Combiflam'
+'Paracetamol'
+'Impulse Pharma'
+
+---------------------------------------------------------------------------------------
+
+INSERT into patient VALUES(&p_id);
+'917642'
+
+INSERT into patient VALUES(&p_id);
+'932453'
+
+INSERT into patient VALUES(&p_id);
+'964238'
+
+---------------------------------------------------------------------------------------
+
+INSERT into works_in_hospital VALUES(&doc_id,&hosp_no);
+'016352'
+'56'
+
+INSERT into works_in_hospital VALUES(&doc_id,&hosp_no);
+'054238'
+'73'
+
+INSERT into works_in_hospital VALUES(&doc_id,&hosp_no);
+'035555'
+'14'
+
+---------------------------------------------------------------------------------------
+
+insert into treatment VALUES(&p_id,ongoing_treat);
+
+---------------------------------------------------------------------------------------
+
+insert into health_record VALUES(&p_id,&record);
+
+---------------------------------------------------------------------------------------
+
+INSERT into hospital_work VALUES(&doc_id,&h_id);
+'016352'
+'292229'
+
+INSERT into hospital_work VALUES(&doc_id,&h_id);
+'054238'
+'232333'
+
+INSERT into hospital_work VALUES(&doc_id,&h_id);
+'035555'
+'266464'
+
+---------------------------------------------------------------------------------------
+
+INSERT into prescribes VALUES(&doc_id,&med_id);
+'016352'
+'356289'
+
+INSERT into prescribes VALUES(&doc_id,&med_id);
+'054238'
+'324361'
+
+INSERT into prescribes VALUES(&doc_id,&med_id);
+'035555'
+'300441'
+
+---------------------------------------------------------------------------------------
+
+INSERT into sells VALUES(&med_id,&med_shop_id);
+'356289'
+'494193'
+
+INSERT into sells VALUES(&med_id,&med_shop_id);
+'324361'
+'444169'
+
+INSERT into sells VALUES(&med_id,&med_shop_id);
+'300441'
+'496225'
+
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
